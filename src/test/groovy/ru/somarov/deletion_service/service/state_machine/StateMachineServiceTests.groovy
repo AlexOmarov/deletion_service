@@ -2,9 +2,11 @@ package ru.somarov.deletion_service.service.state_machine
 
 import ru.somarov.deletion_service.Application
 import ru.somarov.deletion_service.conf.TestDataSourceConfiguration
-import ru.somarov.deletion_service.constant.state_machine.SmEvent
+import ru.somarov.deletion_service.constant.SmEvent
 import ru.somarov.deletion_service.domain.entity.*
 import ru.somarov.deletion_service.domain.repository.Dao
+import ru.somarov.deletion_service.service.StateMachineService
+import ru.somarov.deletion_service.service.TransitionService
 import ru.somarov.deletion_service.service.persister.TransitionPersistenceService
 import org.apache.camel.test.spring.UseAdviceWith
 import org.mockito.ArgumentCaptor
@@ -29,10 +31,8 @@ import static org.mockito.ArgumentMatchers.anyLong
 import static org.mockito.ArgumentMatchers.anyString
 import static org.mockito.Mockito.*
 
-@Import(TestDataSourceConfiguration)
 @ActiveProfiles(profiles = ["test"])
 @ContextConfiguration(classes = [Application])
-@UseAdviceWith
 @SpringBootTest
 class StateMachineServiceTests extends Specification {
 
@@ -96,7 +96,7 @@ class StateMachineServiceTests extends Specification {
 
         ArgumentCaptor<StateContext<Stage.Code, SmEvent>> captor = ArgumentCaptor.forClass(StateContext<Stage.Code, SmEvent>.class)
         when:
-        service.sendNextEvent(process, event)
+        service.send(process, event)
         then:
         verify(factory, times(2)).getStateMachine(anyString())        || true
         verify(transitionService, times(1)).transit(captor.capture()) || true

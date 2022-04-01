@@ -12,9 +12,9 @@ import org.springframework.test.context.ContextConfiguration
 import reactor.core.publisher.Mono
 import ru.somarov.deletion_service.Application
 import ru.somarov.deletion_service.conf.TestDataSourceConfiguration
-import ru.somarov.deletion_service.constant.state_machine.SmEvent
+import ru.somarov.deletion_service.constant.SmEvent
 import ru.somarov.deletion_service.domain.entity.Stage
-import ru.somarov.deletion_service.service.state_machine.TransitionService
+import ru.somarov.deletion_service.service.TransitionService
 import spock.lang.Specification
 
 import static org.mockito.ArgumentMatchers.any

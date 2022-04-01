@@ -4,31 +4,7 @@
                 xsi:schemaLocation="
             http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd
             http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
-    <ehcache:cache alias="action">
-        <ehcache:expiry>
-            <ehcache:tti unit="minutes">20</ehcache:tti>
-        </ehcache:expiry>
-        <ehcache:heap unit="entries">200</ehcache:heap>
-    </ehcache:cache>
-    <ehcache:cache alias="client_group">
-        <ehcache:expiry>
-            <ehcache:tti unit="minutes">20</ehcache:tti>
-        </ehcache:expiry>
-        <ehcache:heap unit="entries">200</ehcache:heap>
-    </ehcache:cache>
-    <ehcache:cache alias="stage">
-        <ehcache:expiry>
-            <ehcache:tti unit="minutes">20</ehcache:tti>
-        </ehcache:expiry>
-        <ehcache:heap unit="entries">200</ehcache:heap>
-    </ehcache:cache>
-    <ehcache:cache alias="action_status">
-        <ehcache:expiry>
-            <ehcache:tti unit="minutes">20</ehcache:tti>
-        </ehcache:expiry>
-        <ehcache:heap unit="entries">200</ehcache:heap>
-    </ehcache:cache>
-    <ehcache:cache alias="broker">
+    <ehcache:cache alias="cache">
         <ehcache:expiry>
             <ehcache:tti unit="minutes">20</ehcache:tti>
         </ehcache:expiry>

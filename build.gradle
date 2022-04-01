@@ -31,11 +31,9 @@ dependencies {
     compileOnly libs.lombok
 
     /* Spring starters */
-    implementation libs.spring.kafka
     implementation libs.spring.statemachine
 
     implementation libs.spring.starter.cache
-    implementation libs.spring.starter.data.jpa
     implementation libs.spring.starter.cloud.vault
     implementation libs.spring.starter.actuator
     implementation libs.spring.starter.web
@@ -53,16 +51,6 @@ dependencies {
     implementation libs.postgres
     implementation libs.flyway
 
-    /* Camel */
-    implementation libs.camel
-    implementation libs.camel.spring
-    implementation libs.camel.commons
-
-    /* Hibernate cache */
-    implementation libs.hibernate.cache
-    implementation libs.ehcache
-    implementation libs.cache.api
-
     /* Logging */
     runtimeOnly libs.slf4j.api
 
@@ -77,10 +65,6 @@ dependencies {
 
     /* Embedded postgres */
     testImplementation libs.embedded.postgres
-
-    /* Kafka/camel test */
-    testImplementation libs.spring.test.kafka
-    testImplementation libs.spring.camel.test
 
     /* Awaitility for scheduled testing */
     testImplementation libs.awaitility
