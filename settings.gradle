@@ -1,0 +1,5 @@
+rootProject.name = 'deletion_service'
+
+// activating version catalogs
+// the default path is "gradle/libs.versions.toml"
+enableFeaturePreview('VERSION_CATALOGS')

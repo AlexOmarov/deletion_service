@@ -1,0 +1,9 @@
+version: '2'
+services:
+  deletion_service:
+    build: .
+    container_name: deletion_service
+    env_file:
+      - ./src/main/resources/application-dev.properties
+    ports:
+      - "11003:11003"

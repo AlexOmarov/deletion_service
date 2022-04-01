@@ -1,0 +1,124 @@
+# -------------------------- Versions ----------------------------
+[versions]
+# Gradle plugins
+maven-publish = "4.21.0"
+sonarqube = "3.3"
+
+# Spring
+spring-framework = "5.3.15"
+spring-boot = "2.6.2"
+spring-kafka = "2.8.2"
+spring-statemachine = "3.0.1"
+spring-cloud-vault = '3.1.0'
+
+spring-security = "5.6.0"
+spring-social-facebook = "2.0.3.RELEASE"
+
+# Logging
+slf4j = "1.7.32"
+logback = "1.2.8"
+
+# DB
+postgres = '42.3.1'
+flyway = '8.2.0'
+hibernate-cache = '5.6.0.Final'
+
+# Testing
+groovy = "3.0.9"
+spock-spring = "2.1-M2-groovy-3.0"
+powermock = "2.0.9"
+cucumber = "1.2.6"
+spring-camel-test = '2.24.1'
+awaitility = '4.1.1'
+embedded-postgres = '0.13.4'
+
+# Cache
+ehcache = "3.9.9"
+cache-api = "1.1.1"
+
+# Other
+lombok = "1.18.22"
+schedlock = "4.30.0"
+aws = '1.12.48'
+validation-api = "2.0.1.Final"
+camel = "3.16.0"
+camel-commons = "3.12.0"
+# -------------------------- Versions ----------------------------
+
+# -------------------------- Libraries ---------------------------
+[libraries]
+
+# Spring
+spring-context-support = { module = "org.springframework:spring-context-support", version.ref = "spring-framework" }
+spring-config-processor = { module = "org.springframework.boot:spring-boot-configuration-processor", version.ref = "spring-boot" }
+spring-security-core = { module = "org.springframework.security:spring-security-core", version.ref = "spring-security" }
+spring-social-facebook = { module = "org.springframework.social:spring-social-facebook", version.ref = "spring-social-facebook" }
+spring-kafka = { module = "org.springframework.kafka:spring-kafka", version.ref = "spring-kafka" }
+spring-statemachine = { module = "org.springframework.statemachine:spring-statemachine-core", version.ref = "spring-statemachine" }
+spring-test-kafka = { module = "org.springframework.kafka:spring-kafka-test", version.ref = "spring-kafka" }
+
+spring-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot" }
+spring-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-starter-aop = { module = "org.springframework.boot:spring-boot-starter-aop", version.ref = "spring-boot" }
+spring-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis", version.ref = "spring-boot" }
+spring-starter-jdbc = { module = "org.springframework.boot:spring-boot-starter-jdbc", version.ref = "spring-boot" }
+spring-starter-security = { module = "org.springframework.boot:spring-boot-starter-security", version.ref = "spring-boot" }
+spring-starter-social-facebook = { module = "org.springframework.boot:spring-boot-starter-social-facebook", version.ref = "spring-boot" }
+spring-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "spring-boot" }
+spring-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+spring-starter-cache = { module = "org.springframework.boot:spring-boot-starter-cache", version.ref = "spring-boot" }
+spring-starter-cloud-vault = { module = "org.springframework.cloud:spring-cloud-starter-vault-config", version.ref = "spring-cloud-vault" }
+
+# Logging
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+# DB
+postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+flyway = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+hibernate-cache = { module = "org.hibernate:hibernate-jcache", version.ref = "hibernate-cache" }
+
+# Testing
+groovy-all = { module = "org.codehaus.groovy:groovy-all", version.ref = "groovy" }
+groovy-core = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
+groovy-json = { module = "org.codehaus.groovy:groovy-json", version.ref = "groovy" }
+groovy-nio = { module = "org.codehaus.groovy:groovy-json", version.ref = "groovy" }
+
+spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock-spring" }
+powermock-junit4 = { module = "org.powermock:powermock-module-junit4", version.ref = "powermock" }
+powermock-mockito2 = { module = "org.powermock:powermock-api-mockito2", version.ref = "powermock" }
+cucumber-junit = { module = "info.cukes:cucumber-junit", version.ref = "cucumber" }
+cucumber-java = { module = "info.cukes:cucumber-java", version.ref = "cucumber" }
+
+spring-camel-test = { module = "org.apache.camel:camel-test-spring", version.ref = "spring-camel-test" }
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+embedded-postgres = { module = "com.opentable.components:otj-pg-embedded", version.ref = "embedded-postgres" }
+
+# Cache
+ehcache = { module = "org.ehcache:ehcache", version.ref = "ehcache" }
+cache-api = { module = "javax.cache:cache-api", version.ref = "cache-api" }
+
+# Other
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+validation-api = { module = "javax.validation:validation-api", version.ref = "validation-api" }
+aws = { module = "com.amazonaws:aws-java-sdk-core", version.ref = "aws" }
+schedlock = { module = "net.javacrumbs.shedlock:shedlock-spring", version.ref = "schedlock" }
+schedlock-jdbc = { module = "net.javacrumbs.shedlock:shedlock-provider-jdbc-template", version.ref = "schedlock" }
+camel = { module = "org.apache.camel:camel-core", version.ref = "camel" }
+camel-commons = { module = "org.apache.commons:commons-lang3", version.ref = "camel-commons" }
+camel-spring = { module = "org.apache.camel.springboot:camel-spring-boot-starter", version.ref = "camel" }
+# -------------------------- Libraries ---------------------------
+
+# --------------------------- Bundles ----------------------------
+[bundles]
+testDeps = [ "spring-starter-test", "spock-spring",
+             "powermock-junit4", "powermock-mockito2",
+             "cucumber-junit", "cucumber-java" ]
+# --------------------------- Bundles ----------------------------
+
+# --------------------------- Plugins ----------------------------
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+# --------------------------- Plugins ----------------------------

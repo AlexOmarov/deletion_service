@@ -1,0 +1,128 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id 'maven-publish'
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.sonarqube)
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations.all {
+    resolutionStrategy {
+        // logback vulnerability fix
+        // see https://bugzilla.redhat.com/show_bug.cgi?id=2033560
+        force libs.logback.classic
+        force libs.groovy.all
+    }
+}
+
+dependencies {
+
+    /* Annotation processors */
+    annotationProcessor libs.spring.config.processor
+    annotationProcessor libs.lombok
+
+    /* Lombok */
+    compileOnly libs.lombok
+
+    /* Spring starters */
+    implementation libs.spring.kafka
+    implementation libs.spring.statemachine
+
+    implementation libs.spring.starter.cache
+    implementation libs.spring.starter.data.jpa
+    implementation libs.spring.starter.cloud.vault
+    implementation libs.spring.starter.actuator
+    implementation libs.spring.starter.web
+    implementation libs.spring.starter.aop
+    implementation libs.spring.starter.validation
+
+    /* Vault amazon sdk */
+    implementation libs.aws
+
+    /* Schedlock */
+    implementation libs.schedlock
+    implementation libs.schedlock.jdbc
+
+    /* Postgres / Flyway */
+    implementation libs.postgres
+    implementation libs.flyway
+
+    /* Camel */
+    implementation libs.camel
+    implementation libs.camel.spring
+    implementation libs.camel.commons
+
+    /* Hibernate cache */
+    implementation libs.hibernate.cache
+    implementation libs.ehcache
+    implementation libs.cache.api
+
+    /* Logging */
+    runtimeOnly libs.slf4j.api
+
+    runtimeOnly libs.groovy.all
+
+    /* Lombok for tests */
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    /* Mockito, powermock, test spring starter, cucumber */
+    testImplementation libs.bundles.testDeps
+
+    /* Embedded postgres */
+    testImplementation libs.embedded.postgres
+
+    /* Kafka/camel test */
+    testImplementation libs.spring.test.kafka
+    testImplementation libs.spring.camel.test
+
+    /* Awaitility for scheduled testing */
+    testImplementation libs.awaitility
+
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: test_exclusions.split(","))
+        }))
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "deletion_service"
+        property "sonar.qualitygate.wait", true
+        property 'sonar.core.codeCoveragePlugin', 'jacoco'
+        property 'sonar.java.coveragePlugin', 'jacoco'
+        property 'sonar.coverage.jacoco.xmlReportPaths', "${project.buildDir}/reports/jacoco/test/jacocoTestReport.xml"
+        property "sonar.cpd.exclusions", test_exclusions
+        property "sonar.jacoco.excludes", test_exclusions
+        property "sonar.coverage.exclusions", test_exclusions
+    }
+}
+
+test {
+    useJUnitPlatform()
+    minHeapSize = "128m" // initial heap size
+    maxHeapSize = "1024m" // maximum heap size
+}
+
+test {
+    jacoco {
+        // Only set coverage for excluded classes to 0 %
+        // If you don't want make your coverage lower
+        // and classes are needed to be completely excluded,
+        // then use config of jacocoTestReport.afterEvaluate
+        excludes += test_exclusions.split(",")
+    }
+}
