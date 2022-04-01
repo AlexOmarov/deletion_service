@@ -31,7 +31,7 @@ class WebRequestActionHandlerTests extends Specification {
     @MockBean
     private ActionPersistenceService persister
 
-    def "Handler accepts deletion process, calls web service to get restrictions and calls persister to save result"() {
+    def "Handler accepts process, calls web service to get restrictions and calls persister to save result"() {
         setup:
         doReturn(List.of()).when(webService).performRequest(any())
         Client client = Client.builder().id(1L).build()

@@ -11,7 +11,7 @@ Service for orchestration of custom processes.
 
 ## Introduction
 
-Deletion service is a test service for Spring state machine framework.
+Deletion service is a test service for Spring state machine framework. It's only a test project, cannot be launched
 
 ## Features
  * Spring persisted state machine
