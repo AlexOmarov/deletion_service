@@ -7,8 +7,8 @@ values ( 1, 'CHECKING'   , 'checking' ),
        ( 3, 'FIRST_STAGE', 'logging_out' );
 
 INSERT INTO action ( id, code, description )
-VALUES ( 1,  'WEB_REQUEST_ACTION'    , 'block in aaa' ),
-       ( 2,  'FIRST_ACTION'   , 'logout in aaa' );
+VALUES ( 1,  'WEB_REQUEST_ACTION'    , '' ),
+       ( 2,  'FIRST_ACTION'   , '' );
 
 INSERT INTO action_status ( id
                           , code
