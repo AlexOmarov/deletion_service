@@ -21,8 +21,5 @@ public final class Constants {
     /* Producer name */
     public static final String PRODUCER_NAME = "DELETION_SERVICE";
 
-    /* Deletion context */
-    public static final String CONTEXT = "DEFAULT";
-
     private Constants() {}
 }

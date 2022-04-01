@@ -6,11 +6,11 @@ import spock.lang.Specification
 class UtilsTests extends Specification {
     def "getTopicAndRecipientCode parses incoming string into recipient code and recipient topic"() {
         setup:
-        String recipient = "AAA::TOPIC"
+        String recipient = "FIRST_SYSTEM::TOPIC"
         when:
         def pair = Utils.getTopicAndRecipientCode(recipient)
         then:
-        pair.getLeft() == SideSystem.AAA
+        pair.getLeft() == SideSystem.FIRST_SYSTEM
         pair.getRight() == "TOPIC"
     }
 

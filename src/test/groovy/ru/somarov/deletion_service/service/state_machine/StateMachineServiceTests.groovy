@@ -73,7 +73,7 @@ class StateMachineServiceTests extends Specification {
         verify(transitionService, times(1)).transit(captor.capture()) || true
         def context = captor.getValue()
         context.getStateMachine().getId() == sm.getId()
-        context.getTarget().getId() == Stage.Code.ASYNC_STAGE
+        context.getTarget().getId() == Stage.Code.WEB_REQUEST_STAGE
         context.getEvent() == event
     }
 
@@ -99,14 +99,14 @@ class StateMachineServiceTests extends Specification {
         service.sendNextEvent(process, event)
         then:
         verify(factory, times(2)).getStateMachine(anyString())        || true
-        verify(transitionService, times(2)).transit(captor.capture()) || true
+        verify(transitionService, times(1)).transit(captor.capture()) || true
         def context = captor.getAllValues()
         context[0].getStateMachine().getId() == sm.getId()
         context[0].getTarget().getId() == Stage.Code.ASYNC_STAGE
         context[0].getEvent() == event
 
         context[1].getStateMachine().getId() == sm.getId()
-        context[1].getTarget().getId() == Stage.Code.ASYNC_STAGE
+        context[1].getTarget().getId() == Stage.Code.WEB_REQUEST_STAGE
         context[1].getEvent() == SmEvent.WEB_REQUEST_SUCCEEDED
     }
 }
